@@ -9,7 +9,7 @@ namespace Restaurant.Moels
     public class Employee
     {
         private int NewRequestCount = 0;
-        private object o;
+        private object o; //TODO: Rename this variable to meeningfull name.
         private bool chickenPrepared = false;
         private bool eggPrepared = false;
         public Employee()
@@ -99,6 +99,7 @@ namespace Restaurant.Moels
                 EggOrder e = (EggOrder)o;
                 for (int i = 0; i < e.GetQuantity(); i++)
                 {
+                    //TODO: You called e.DiscardShell() twice. Please call it only once.
                     try
                     {
                         e.Crack();

@@ -21,6 +21,7 @@ namespace Restaurant.Moels
 
         public EggOrder(int quantity, int quality)
         {
+            //TODO: This quality can be null.
             this.Quality = quality;
             this.Quantity = quantity;
         }
@@ -32,6 +33,7 @@ namespace Restaurant.Moels
 
         public int? GetQuality()
         {
+            //TODO: Why we need QualityGet variable? Make sure if the method returns null then this.Quality value also should be null.
             QualityGet++;
             if(QualityGet % 2 == 0)
             {
