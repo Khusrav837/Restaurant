@@ -59,8 +59,8 @@ namespace Restaurant
         {
             try
             {
-                var o = Employee.CopyRequest();
-                var r = Employee.Inspect(o);
+                ChikenOrEgg = Employee.CopyRequest();
+                var r = Employee.Inspect(ChikenOrEgg);
                 Results.Items.Add(r);
             }
             catch (Exception th)
@@ -73,16 +73,8 @@ namespace Restaurant
         {
             try
             {
-                if (Chiken.IsChecked == true)
-                {
-                    var r = Employee.PrepareFood(ChikenOrEgg);
-                    Results.Items.Add(r);
-                }
-                else
-                {
-                    var r = Employee.PrepareFood(ChikenOrEgg);
-                    Results.Items.Add(r);
-                }
+                var r = Employee.PrepareFood(ChikenOrEgg);
+                Results.Items.Add(r);
             }
             catch (Exception th)
             {
