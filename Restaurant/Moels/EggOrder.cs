@@ -9,17 +9,21 @@ namespace Restaurant.Moels
     public class EggOrder
     {
         private int Quantity;
-        private int Quality;
-        private int QualityGet = 0;
+        private int? Quality;
+        private int QualityCreat = 0;
 
         public EggOrder(int quantity)
         {
-            Random rand = new Random();
-            this.Quality = rand.Next(101);
+            QualityCreat++;
+            if(QualityCreat % 2 == 1)
+            {
+                Random rand = new Random();
+                this.Quality = rand.Next(101);
+            }
             this.Quantity = quantity;
         }
 
-        public EggOrder(int quantity, int quality)
+        public EggOrder(int quantity, int? quality)
         {
             //TODO: This quality can be null.
             this.Quality = quality;
@@ -34,15 +38,7 @@ namespace Restaurant.Moels
         public int? GetQuality()
         {
             //TODO: Why we need QualityGet variable? Make sure if the method returns null then this.Quality value also should be null.
-            QualityGet++;
-            if (QualityGet % 2 == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return this.Quality;
-            }
+            return this.Quality;
         }
 
         public void Crack()
