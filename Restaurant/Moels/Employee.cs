@@ -9,7 +9,7 @@ namespace Restaurant.Moels
     public class Employee
     {
         private int NewRequestCount = 0;
-        private object o;
+        private object o; //TODO: Rename this variable to meeningfull name.
         private bool chickenPrepared = false;
         private bool eggPrepared = false;
         public Employee()
@@ -22,7 +22,7 @@ namespace Restaurant.Moels
             NewRequestCount++;
             if (m == "chiken")
             {
-                if(NewRequestCount % 3 == 0)
+                if (NewRequestCount % 3 == 0)
                 {
                     o = new EggOrder(quantity);
                 }
@@ -47,12 +47,12 @@ namespace Restaurant.Moels
 
         public object CopyRequest()
         {
-            if(o is ChickenOrder)
+            if (o is ChickenOrder)
             {
                 ChickenOrder c = (ChickenOrder)o;
                 return c.Copy();
             }
-            else if(o is EggOrder)
+            else if (o is EggOrder)
             {
                 EggOrder e = (EggOrder)o;
                 return e.Copy();
@@ -74,14 +74,14 @@ namespace Restaurant.Moels
         {
             if (o is ChickenOrder)
             {
-                if(chickenPrepared)
+                if (chickenPrepared)
                 {
                     throw new Exception("already chicken kaput!");
                 }
                 chickenPrepared = true;
 
                 ChickenOrder c = (ChickenOrder)o;
-                for(int i = 0; i < c.GetQuantity(); i++)
+                for (int i = 0; i < c.GetQuantity(); i++)
                 {
                     c.CutUp();
                 }
@@ -99,6 +99,7 @@ namespace Restaurant.Moels
                 EggOrder e = (EggOrder)o;
                 for (int i = 0; i < e.GetQuantity(); i++)
                 {
+                    //TODO: You called e.DiscardShell() twice. Please call it only once.
                     try
                     {
                         e.Crack();

@@ -25,8 +25,9 @@ namespace Restaurant
         {
             InitializeComponent();
         }
-
+        //TODO: Please use meaningful name for your variables.
         Employee em = new Employee();
+        //TODO: You don;t need to create new instance of ChickenOrder or EggOrder in this class.
         ChickenOrder ch;
         EggOrder egg;
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -48,8 +49,8 @@ namespace Restaurant
                     eggq.Content = "Egg quality: " + r;
 
                 }
-            } 
-            catch(Exception th)
+            }
+            catch (Exception th)
             {
                 Results.Items.Add(th.Message);
             }
@@ -84,7 +85,7 @@ namespace Restaurant
                     Results.Items.Add(r);
                 }
             }
-            catch(Exception th)
+            catch (Exception th)
             {
                 Results.Items.Add(th.Message);
             }
