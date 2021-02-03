@@ -9,7 +9,7 @@ namespace Restaurant.Moels
     public class Employee
     {
         private int NewRequestCount = 0;
-        private object o; //TODO: Rename this variable to meeningfull name.
+        private object ChikenOrEgg; //TODO: Rename this variable to meeningfull name.
         private bool chickenPrepared = false;
         private bool eggPrepared = false;
         public Employee()
@@ -22,39 +22,39 @@ namespace Restaurant.Moels
             NewRequestCount++;
             if (m == "chiken")
             {
-                if(NewRequestCount % 3 == 0)
+                if (NewRequestCount % 3 == 0)
                 {
-                    o = new EggOrder(quantity);
+                    ChikenOrEgg = new EggOrder(quantity);
                 }
                 else
                 {
-                    o = new ChickenOrder(quantity);
+                    ChikenOrEgg = new ChickenOrder(quantity);
                 }
             }
             else
             {
                 if (NewRequestCount % 3 == 0)
                 {
-                    o = new ChickenOrder(quantity);
+                    ChikenOrEgg = new ChickenOrder(quantity);
                 }
                 else
                 {
-                    o = new EggOrder(quantity);
+                    ChikenOrEgg = new EggOrder(quantity);
                 }
             }
-            return o;
+            return ChikenOrEgg;
         }
 
         public object CopyRequest()
         {
-            if(o is ChickenOrder)
+            if (ChikenOrEgg is ChickenOrder)
             {
-                ChickenOrder c = (ChickenOrder)o;
+                ChickenOrder c = (ChickenOrder)ChikenOrEgg;
                 return c.Copy();
             }
-            else if(o is EggOrder)
+            else if (ChikenOrEgg is EggOrder)
             {
-                EggOrder e = (EggOrder)o;
+                EggOrder e = (EggOrder)ChikenOrEgg;
                 return e.Copy();
             }
             throw new Exception("Hey Guy You haven't instance!");
@@ -74,14 +74,14 @@ namespace Restaurant.Moels
         {
             if (o is ChickenOrder)
             {
-                if(chickenPrepared)
+                if (chickenPrepared)
                 {
                     throw new Exception("already chicken kaput!");
                 }
                 chickenPrepared = true;
 
                 ChickenOrder c = (ChickenOrder)o;
-                for(int i = 0; i < c.GetQuantity(); i++)
+                for (int i = 0; i < c.GetQuantity(); i++)
                 {
                     c.CutUp();
                 }
@@ -103,13 +103,12 @@ namespace Restaurant.Moels
                     try
                     {
                         e.Crack();
-                        e.DiscardShell();
                     }
                     catch
                     {
-                        e.DiscardShell();
                         rotten++;
                     }
+                    e.DiscardShell();
                 }
                 e.Cook();
                 return "indicating preparation has been completed " + rotten.ToString();

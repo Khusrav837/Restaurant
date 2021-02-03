@@ -25,10 +25,10 @@ namespace Restaurant
         {
             InitializeComponent();
         }
-
-        Employee em = new Employee();
-        ChickenOrder ch;
-        EggOrder egg;
+        //TODO: Please use meaningful name for your variables.
+        Employee Employee = new Employee();
+        //TODO: You don;t need to create new instance of ChickenOrder or EggOrder in this class.
+        object ChikenOrEgg;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -36,20 +36,20 @@ namespace Restaurant
                 var q = int.Parse(qtity.Text);
                 if (Chiken.IsChecked == true)
                 {
-                    ch = (ChickenOrder)em.NewRequest(q, "chiken");
-                    var r = em.Inspect(ch);
+                    ChikenOrEgg = Employee.NewRequest(q, "chiken");
+                    var r = Employee.Inspect(ChikenOrEgg);
                     Results.Items.Add(r);
                 }
                 else
                 {
-                    egg = (EggOrder)em.NewRequest(q);
-                    var r = em.Inspect(egg);
+                    var ChikenOrEgg = Employee.NewRequest(q);
+                    var r = Employee.Inspect(ChikenOrEgg);
                     Results.Items.Add(r);
                     eggq.Content = "Egg quality: " + r;
 
                 }
-            } 
-            catch(Exception th)
+            }
+            catch (Exception th)
             {
                 Results.Items.Add(th.Message);
             }
@@ -59,8 +59,8 @@ namespace Restaurant
         {
             try
             {
-                var o = em.CopyRequest();
-                var r = em.Inspect(o);
+                ChikenOrEgg = Employee.CopyRequest();
+                var r = Employee.Inspect(ChikenOrEgg);
                 Results.Items.Add(r);
             }
             catch (Exception th)
@@ -73,18 +73,10 @@ namespace Restaurant
         {
             try
             {
-                if (Chiken.IsChecked == true)
-                {
-                    var r = em.PrepareFood(ch);
-                    Results.Items.Add(r);
-                }
-                else
-                {
-                    var r = em.PrepareFood(egg);
-                    Results.Items.Add(r);
-                }
+                var r = Employee.PrepareFood(ChikenOrEgg);
+                Results.Items.Add(r);
             }
-            catch(Exception th)
+            catch (Exception th)
             {
                 Results.Items.Add(th.Message);
             }
